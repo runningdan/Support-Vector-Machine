@@ -11,7 +11,6 @@ for line in file.readlines():
         if i > 1: xx.append(float(datapoint))
         if i == 1: y.append(datapoint)
     X.append(xx)
-
 svm = LSVM(x=X, y=y, C=1, tol=0.000001, max_Passes = 50, min_Alpha=0.00001, checkAccuracy=True, OVR=False)
 print('Training classifier please wait')
 svm.trainClassifier()
