@@ -6,7 +6,7 @@ By Dan White
 from numpy import *
 
 
-class SVM(object):
+class SVM:
 
     '''SVM Base class'''
 
