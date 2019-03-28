@@ -13,7 +13,7 @@ for line in file.readlines():
     X.append(xx)
 svm = LSVM(x=X, y=y, C=1, tol=0.000001, max_Passes = 50, min_Alpha=0.00001, checkAccuracy=True, OVR=False)
 print('Training classifier please wait')
-svm.trainClassifier()
+svm.train()
 while True:
     vector = input('Input a sample\n')
     sample = [float(x) for x in vector.split(',')];
