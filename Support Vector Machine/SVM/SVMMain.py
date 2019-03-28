@@ -16,14 +16,14 @@ class SVM:
                 checkAccuracy = True, OVR = False, **kwargs
                 ):
 
-        self._x = mat(x) #data features
+        self._x = mat(x) 
         self._OVR = OVR
-        self._y = y #data labels
-        self._C = C #Slack variable
-        self._max_Passes = max_Passes #max passes
+        self._y = y 
+        self._C = C 
+        self._max_Passes = max_Passes 
         self._tol = tol
-        self._min_Alpha = min_Alpha #minimum alpha optimization
-        self._m, self._n = shape(self._x) #gets height and width of matrix x
+        self._min_Alpha = min_Alpha 
+        self._m, self._n = shape(self._x) 
         self._checkAccuracyRate = checkAccuracy
         self._multiLabel_y = []
         self._multiLabel_alpha = []
