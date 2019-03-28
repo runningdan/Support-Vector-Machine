@@ -14,12 +14,12 @@ for line in file.readlines():
 
 svm = RBFSVM(x=X, y=y, C=2, tol=0.000001, max_Passes = 500, min_Alpha=0.00001, gamma=0.001, checkAccuracy=True, OVR=False)
 print('Training classifier please wait')
-svm.trainClassifier()
+svm.fit()
 while True:
     vector = input('Input a sample\n')
     try:
         sample = [float(x) for x in vector.split(',')];
-        predictSample = svm.classifySample([sample]);
+        predictSample = svm.predict([sample]);
         print("{0}. confidence {1}%".format(predictSample[0],predictSample[1]));
     except:
         pass
