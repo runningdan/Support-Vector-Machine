@@ -40,7 +40,7 @@ class SVM:
         K = va * vb.T
         return K
 
-    def train(self, yy):
+    def SMO(self, yy):
         yy = mat(yy).transpose()
         passes = 0; alpha = mat(zeros((self._m,1)))
         b = 0; K = mat(zeros((self._m,self._m)))
@@ -75,14 +75,14 @@ class SVM:
         w = self.calcW(self._x, yy, self._m, self._n, alpha)
         return alpha, w, b
 
-    def trainClassifier(self):
+    def train(self):
         types = list(dict.fromkeys(self._y))
         for i, j in enumerate(types):
             y=[]
             for k, x in enumerate(self._y):
                 if x == j: y.append(-1)
                 else: y.append(1)
-            alpha, w, b = self.train(y)
+            alpha, w, b = self.SMO(y)
             self._multiLabel_alpha.append(alpha)
             self._multiLabel_b.append(b); self._multiLabel_y.append([y])
             if(self._OVR == False): break
