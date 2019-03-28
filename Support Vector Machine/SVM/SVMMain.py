@@ -16,14 +16,14 @@ class SVM:
                 checkAccuracy = True, OVR = False, **kwargs
                 ):
 
-        self._x = mat(x) 
+        self._x = mat(x) #data features
         self._OVR = OVR
-        self._y = y 
-        self._C = C 
-        self._max_Passes = max_Passes 
+        self._y = y #data labels
+        self._C = C #Slack variable
+        self._max_Passes = max_Passes #max passes
         self._tol = tol
-        self._min_Alpha = min_Alpha 
-        self._m, self._n = shape(self._x) 
+        self._min_Alpha = min_Alpha #minimum alpha optimization
+        self._m, self._n = shape(self._x) #gets height and width of matrix x
         self._checkAccuracyRate = checkAccuracy
         self._multiLabel_y = []
         self._multiLabel_alpha = []
@@ -66,16 +66,16 @@ class SVM:
                     if (abs(alpha[j] - alphaJold) < self._min_Alpha): continue
                     alpha[i] = self.calcAlphaI(i, j, yy, alpha, alphaJold)
                     b = self.KKTConditions(
-                                            i, j, self._x, yy, alpha,
-                                            Ei, Ej, b, alphaIold, alphaJold, self._C, K
-                                          )
+                    i, j, self._x, yy, alpha,
+                    Ei, Ej, b, alphaIold, alphaJold, self._C, K
+                    )
                     num_changed_alphas += 1
             if num_changed_alphas == 0: passes += 1
             else: passes = 0
         w = self.calcW(self._x, yy, self._m, self._n, alpha)
         return alpha, w, b
 
-    def train(self):
+    def fit(self):
         types = list(dict.fromkeys(self._y))
         for i, j in enumerate(types):
             y=[]
@@ -92,14 +92,14 @@ class SVM:
             if(self._OVR): stats = self.calcStats(self._m)
             print( "Accuracy rate is {0}%".format(stats))
 
-    def classifySample(self, nVector):
+    def predict(self, nVector):
         types = list(dict.fromkeys(self._y))
         prob = [0]*len(types); score = 0
         for i, j in enumerate(types):
-            predict = self.classifyPoint(
-                                        nVector, self._multiLabel_y[i],
-                                        self._multiLabel_alpha[i], self._multiLabel_b[i]
-                                        )
+            predict = self.cVector(
+            nVector, self._multiLabel_y[i],
+            self._multiLabel_alpha[i], self._multiLabel_b[i]
+            )
             if(predict == -1): prob[i] += 1
             else:
                 for k, e in enumerate(types):
@@ -109,14 +109,16 @@ class SVM:
             else : score = max(prob)/len(prob)*100;
         return types[argmax(prob)], score
 
-    def classifyPoint(self, nVector, y, alpha, b):
+    def cVector(self, nVector, y, alpha, b): #g(x)=sgn(b+∑αiyiK(xi,x))
         y = mat(y).transpose()
         vect = mat(nVector); Iter = shape(vect)[0]
         supportVectorIndex=nonzero(alpha.A>0)[0]
-        supportVectors=self._x[supportVectorIndex]; supportVectorLabel = y[supportVectorIndex]
+        supportVectors=self._x[supportVectorIndex]
+        supportVectorLabel = y[supportVectorIndex]
         for i in range(Iter):
             kernal = self.kernal(supportVectors,vect)
-            predict=kernal.T * multiply(supportVectorLabel,alpha[supportVectorIndex]) + b
+            predict=kernal.T * multiply(supportVectorLabel, \
+                               alpha[supportVectorIndex]) + b
         classify = -1
         if (sign(predict[0]).item(0, 0) == 1): classify = 1
         return classify
@@ -124,7 +126,7 @@ class SVM:
     def calcStats(self, m):
         accuracyRate = 0
         for i, x in enumerate(self._x):
-            predict = self.classifySample(x)
+            predict = self.predict(x)
             if predict[0] == self._y[i]: accuracyRate += 1
         return accuracyRate/len(self._x)*100
 
