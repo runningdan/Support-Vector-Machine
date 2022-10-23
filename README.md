@@ -16,14 +16,14 @@ Below are examples of data seperated by a hyperlane utilizing linear and non-lin
 ![svm diagram](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnbt1206-1565/MediaObjects/41587_2006_BFnbt12061565_Fig1_HTML.gif "SVM")
 <sub><sup>Noble, W. What is a support vector machine?. Nat Biotechnol 24, 1565–1567 (2006). https://doi.org/10.1038/nbt1206-1565</sup></sub>
 
-#### Getting Started 
+### Getting Started 
 
 #### Install Numpy
-In order to start classifying your own data with the svm you must first install numpy
+In order to start classifying your own data with the SVM you must first install Numpy
 
-`pip install numpy`
+`pip3 install numpy`
 
-After installing numpy your ready to start using the library. below is an example classifier which is able to determine if one has parkinsons disease from pitch differeances in audio samples. 
+After installing Numpy youre ready to start using the SVM library. Below is an example classifier which is able to determine if an input sample is likely to have parkinsons disease from pitch differeances in audio samples. 
 
 ```
 from SVM import *
@@ -31,7 +31,7 @@ from SVM import *
 X = []
 y = []
 
-# open parkinsons dataset text file. This file is filled with training data
+# open parkinsons dataset text file. This file contains training data
 file = open('datasets/parkinson\'s disease/dataset.txt')
 
 for line in file.readlines():
@@ -45,7 +45,7 @@ for line in file.readlines():
 # init svm with radial basis function kernal
 svm = RBFSVM(x=X, y=y, C=2, tol=0.000001, max_Passes = 500, min_Alpha=0.00001, gamma=0.001, checkAccuracy=True, OVR=False)
 
-# train/fit classifier
+# train classifier
 svm.fit()
 
 # allow user to input samples into trained svm algorithm. 
