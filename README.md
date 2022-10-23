@@ -5,7 +5,7 @@
 
 The goal of an SVM is to separate a n-dimensional feature space with a single hyperplane. The hyperplane allows the SVM algorithm to make a prediction on an input based its coordinates. The SVM can be best used by classifying groups of similarly related data.
 
-This library leverages the power of the SVM algorithm while only using Numpy as a dependency. Numpy is a python math library that contains functions to assist when working with linear algebra. 
+This library leverages the power of the SVM algorithm while only using Numpy as a dependency. Numpy is a python math library that contains functions to assist with scientific computing. 
 
 ### Solving the SVM dual problem
 Below is the dual form of the SVM. This library is able to tackle this problem effienctly by utilizing the SMO algorithm. 
