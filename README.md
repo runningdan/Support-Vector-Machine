@@ -12,7 +12,7 @@ Below is the dual form of the SVM. This library is able to tackle this problem e
 ![svm diagram](https://i.stack.imgur.com/mDQfb.png "SVM")
 
 ### Classification examples including kernal functions & linear classification
-Below are examples of data seperated by a hyperlane utilizing different kernal functions
+Below are examples of data seperated by a hyperlane utilizing different transform functions
 ![svm diagram](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnbt1206-1565/MediaObjects/41587_2006_BFnbt12061565_Fig1_HTML.gif "SVM")
 <sub><sup>Noble, W. What is a support vector machine?. Nat Biotechnol 24, 1565–1567 (2006). https://doi.org/10.1038/nbt1206-1565</sup></sub>
 
