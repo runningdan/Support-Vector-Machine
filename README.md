@@ -1,32 +1,31 @@
 # Support-Vector-Machine
-### Open Source Machine Learning Library Built With Numpy
+## Open Source Machine Learning Library Built With Numpy
 
-###### SVM Introduction
+### SVM Introduction
 
 The goal of an svm is to separate a n-dimensional feature space with a single hyperplane. We can use this to classify groups of related data. The hyperplane allows the SVM algorithm to make a prediction on an input based on which side it falls on.
 
 This library leverages the power of the svm algorithm while only using one dependency - numpy. Numpy is a python math library that contains functions to assist when working with linear algebra. 
 
-###### Solving the dual form
+### Solving the dual form
 Below is the dual form of the SVM. This library is able to tackle this problem effienctly by utilizing the SMO algorithm. 
 ![svm diagram](https://i.stack.imgur.com/mDQfb.png "SVM")
 
-###### Examples of classification without a kernal transform
-![svm diagram](https://miro.medium.com/max/1400/1*ZpkLQf2FNfzfH4HXeMw4MQ.png "SVM")
-
-###### More classification examples including kernal functions & linear classification
+### Classification examples including kernal functions & linear classification
+Below are examples of data seperated by a hyperlane utilizing different kernal functions
 ![svm diagram](https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fnbt1206-1565/MediaObjects/41587_2006_BFnbt12061565_Fig1_HTML.gif "SVM")
-<sub><sup>Image credit - Nature Biotechnology</sup></sub>
+<sub><sup>Noble, W. What is a support vector machine?. Nat Biotechnol 24, 1565–1567 (2006). https://doi.org/10.1038/nbt1206-1565</sup></sub>
 
-###### Getting Started 
+#### Getting Started 
+
+#### Install Numpy
 In order to start classifying your own data with the svm you must first install numpy
 
 `pip install numpy`
 
 after installing numpy your ready to start using the library. below is an example classifier which is able to determine if one has parkinsons disease from pitch differeances in audio samples. 
 
-```dotnetcli
-
+```
 from SVM import *
 
 X = []
