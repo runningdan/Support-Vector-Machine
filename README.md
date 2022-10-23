@@ -52,10 +52,7 @@ svm.fit()
 # the algorithm will then output a confidence score and predictions
 while True:
     vector = input('Input a sample\n')
-    try:
-        sample = [float(x) for x in vector.split(',')];
-        predictSample = svm.predict([sample]);
-        print("{0}. confidence {1}%".format(predictSample[0],predictSample[1]));
-    except:
-        pass
+    sample = [float(x) for x in vector.split(',')];
+    predictSample = svm.predict([sample]);
+    print("{0}. confidence {1}%".format(predictSample[0],predictSample[1]));
 ```
