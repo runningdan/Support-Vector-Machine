@@ -23,7 +23,7 @@ In order to start classifying your own data with the svm you must first install 
 
 `pip install numpy`
 
-after installing numpy your ready to start using the library. below is an example classifier which is able to determine if one has parkinsons disease from pitch differeances in audio samples. 
+After installing numpy your ready to start using the library. below is an example classifier which is able to determine if one has parkinsons disease from pitch differeances in audio samples. 
 
 ```
 from SVM import *
