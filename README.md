@@ -8,7 +8,7 @@ The goal of an SVM is to separate a n-dimensional feature space with a single hy
 This library leverages the power of the SVM algorithm while only using Numpy as a dependency. Numpy is a python math library that contains functions to assist with scientific computing. 
 
 ### Solving the SVM dual problem
-Below is the dual form of the SVM. This library is able to tackle this problem effienctly by utilizing the SMO algorithm. 
+Below is the dual form of the SVM. This library is able to tackle this problem efficiently by utilizing the SMO algorithm. 
 
 ![svm diagram](https://i.stack.imgur.com/mDQfb.png "SVM")
 
